@@ -11,6 +11,9 @@ pipeline {
         }
 
         stage('Etapa compilar paralelo') {
+          environment {
+            VBLE = 'Hola'
+          }
           steps {
             timestamps() {
               echo 'Hola etapa compilar paralelo'
@@ -24,9 +27,24 @@ pipeline {
     }
 
     stage('Etapa Fin') {
-      steps {
-        echo 'Etapa Fin'
-        sleep 3
+      parallel {
+        stage('Etapa Fin') {
+          steps {
+            echo 'Etapa Fin'
+            sleep 3
+          }
+        }
+
+        stage('Etapa Fin 2') {
+          steps {
+            timestamps() {
+              echo 'Etapa Fin 2'
+              sleep 3
+            }
+
+          }
+        }
+
       }
     }
 
