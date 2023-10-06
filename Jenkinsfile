@@ -23,6 +23,13 @@ pipeline {
       }
     }
 
+    stage('Etapa Fin') {
+      steps {
+        echo 'Etapa Fin'
+        sleep 3
+      }
+    }
+
   }
   tools {
     maven 'MAVEN_3_8_6'
