@@ -36,4 +36,16 @@ pipeline {
     maven 'MAVEN_3_8_6'
     jdk 'JDK_11'
   }
+  post {
+      always {
+          cleanWs()
+          dir("${env.WORKSPACE}@tmp") {
+              deleteDir()
+          }
+          dir("${env.WORKSPACE}@script") {
+              deleteDir()
+          }
+      }
+  } 
+  
 }
