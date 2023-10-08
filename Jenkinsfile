@@ -26,6 +26,7 @@ pipeline {
     stage('Etapa Fin') {
       steps {
         echo 'Etapa Fin'
+        archiveArtifacts '**/*'
         sleep 3
       }
     }
