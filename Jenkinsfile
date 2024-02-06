@@ -31,21 +31,29 @@ pipeline {
       }
     }
 
+    stage('Ejecución') {
+      steps {
+        bat 'mvn exec:java -Dexec.mainClass=Principal'
+      }
+    }
+
   }
   tools {
     maven 'MAVEN_3_8_6'
     jdk 'JDK_11'
   }
   post {
-      always {
-          cleanWs()
-          dir("${env.WORKSPACE}@tmp") {
-              deleteDir()
-          }
-          dir("${env.WORKSPACE}@script") {
-              deleteDir()
-          }
+    always {
+      cleanWs()
+      dir("${env.WORKSPACE}@tmp") {
+        deleteDir()
       }
-  } 
-  
+
+      dir("${env.WORKSPACE}@script") {
+        deleteDir()
+      }
+
+    }
+
+  }
 }
