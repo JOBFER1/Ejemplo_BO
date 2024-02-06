@@ -31,9 +31,9 @@ pipeline {
       }
     }
 
-    stage('Ejecución') {
+    stage('EjecuciÃ³n') {
       steps {
-        bat 'mvn exec:java -Dexec.mainClass=Principal'
+        bat 'mvn exec:java -Dexec.mainClass=com.cursoPrincipal'
       }
     }
 
